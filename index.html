@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue Example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+  </head>
+  <body>
+   <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1 class="jumbotrom"> VueJs</h1>
+        <div id="app">
+          <table class="table table-stipped">
+            <thead>
+              <tr>
+                <th style="width:40px;"></th> 
+                <th> Descripcion</th>
+                <th style="width:200px;">Monto</th>
+                <th style="width:100px;">Cancelado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in items">
+                <td>
+                  <buttom type="buttom" class="btn btn-danger btn-xs">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </td>
+                <td>{{item.name}}</td>
+                <td>{{item.amount.toFixed (2)}}</td>
+                <td class="text-center" :title="item.paid ? 'si' : 'No'">
+                  <buttom 
+                  class="btn btn-default btn-sm"
+                  :class="{'btn-success' : item.paid }">
+                   <i v-if="item.paid" class="glyphicon glyphicon-ok"></i>
+                   <i v-if="!item.paid" class="glyphicon glyphicon-remove"></i>
+                  </buttom>
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+        
+      </div>
+    </div>
+   </div>
+   </div>
+
+   <script src="https://unpkg.com/vue"></script>
+   <script>
+    var app= new Vue({
+      el: '#app',
+      data: {
+        
+     items: [
+      {name:'Servicios', amount: 200, paid: false},
+      {name: 'Hosting de Anexsoft', amount: 90, paid: true },
+     ]
+        
+      }
+    });
+   </script>
+  </body>
+</html>
